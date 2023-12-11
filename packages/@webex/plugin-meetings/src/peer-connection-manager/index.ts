@@ -101,6 +101,8 @@ const setStartBitrateOnRemoteSdp = (sdp) => {
 const checkH264Support = (sdp: string) => {
   // eslint-disable-next-line no-warning-comments
   // TODO convert to sdp parser to read rtp.codec
+  if (sdp) return true; // ZZZZZZZZ just until we drop video from offer sdp.
+
   const videoPresent = sdp.match(/\nm=video.*/g);
   const h264Present = sdp.match(/\na=rtpmap:\d+\sH264.*/g);
 

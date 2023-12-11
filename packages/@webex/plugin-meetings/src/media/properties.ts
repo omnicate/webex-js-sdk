@@ -256,6 +256,7 @@ export default class MediaProperties {
    */
   async getCurrentConnectionType() {
     // we can only get the connection type after ICE connection has been established
+    return 'UDP'; // ZZZZ
     await this.waitForIceConnectedState();
 
     const allStatsReports = [];

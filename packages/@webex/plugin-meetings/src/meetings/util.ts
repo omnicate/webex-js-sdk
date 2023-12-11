@@ -85,8 +85,10 @@ MeetingsUtil.parseDefaultSiteFromMeetingPreferences = (userPreferences) => {
  * @returns {Promise<boolean>}
  */
 MeetingsUtil.hasH264Codec = async () => {
-  let hasCodec = false;
+  const hasCodec = true;
 
+  // ZZZ
+  /* Dont use pc for that
   try {
     const pc = new window.RTCPeerConnection();
     const offer = await pc.createOffer({offerToReceiveVideo: true});
@@ -100,6 +102,8 @@ MeetingsUtil.hasH264Codec = async () => {
       'Meetings:util#hasH264Codec --> Error creating peerConnection for H.264 test.'
     );
   }
+
+   */
 
   return hasCodec;
 };
