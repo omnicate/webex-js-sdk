@@ -228,7 +228,7 @@ export default class Reachability {
 
     clusters = clusters.map(async (key, index) => {
       // All are in 100ms reach
-      return Promise.resolve({clusterId: key, elapsed: 100 + index});
+      return Promise.resolve({clusterId: key, elapsed: 100 - index});
     });
 
     return Promise.all(clusters)
