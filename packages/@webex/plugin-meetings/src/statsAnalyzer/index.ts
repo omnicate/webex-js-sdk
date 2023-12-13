@@ -53,6 +53,7 @@ export class StatsAnalyzer extends EventsScope {
   statsInterval: NodeJS.Timeout;
   statsResults: any;
   statsStarted: any;
+  fakePacketsCount: any;
 
   /**
    * Creates a new instance of StatsAnalyzer
@@ -551,6 +552,7 @@ export class StatsAnalyzer extends EventsScope {
    * @returns {void}
    */
   private compareLastStatsResult() {
+    this.fakePacketsCount = 50 + this.fakePacketsCount;
     if (this.lastStatsResults !== null && this.meetingMediaStatus) {
       // compare audio stats sent
       let mediaType = STATS.AUDIO_CORRELATE;
@@ -587,8 +589,8 @@ export class StatsAnalyzer extends EventsScope {
 
         this.emitStartStopEvents(
           mediaType,
-          previousStats.totalPacketsSent,
-          currentStats.totalPacketsSent,
+          this.fakePacketsCount, // previousStats.totalPacketsSent, ZZZZ
+          this.fakePacketsCount, // currentStats.totalPacketsSent,
           true
         );
       }
@@ -616,8 +618,8 @@ export class StatsAnalyzer extends EventsScope {
 
         this.emitStartStopEvents(
           mediaType,
-          previousStats.totalPacketsReceived,
-          currentStats.totalPacketsReceived,
+          this.fakePacketsCount, // ZZZZ previousStats.totalPacketsReceived,
+          this.fakePacketsCount, // currentStats.totalPacketsReceived,
           false
         );
       }

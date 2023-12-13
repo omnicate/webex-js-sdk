@@ -174,12 +174,16 @@ const limitBandwidth = (sdp: string) => {
  * @param {RTCPeerConnection} screenPc
  * @returns {RTCPeerConnection}
  */
-pc.setContentSlides = (screenPc: any) => {
+// ZZZ
+pc.setContentSlidesDontPutContentSlidesWhenThereIsNoMlineApplication = (screenPc: any) => {
   if (screenPc && screenPc.sdp) {
     screenPc.sdp += `${SDP.A_CONTENT_SLIDES}${SDP.CARRIAGE_RETURN}`;
   }
 
   return screenPc;
+};
+pc.setContentSlides = (screenPc: any) => {
+  return screenPc; // ZZZ wait with slides
 };
 
 /**

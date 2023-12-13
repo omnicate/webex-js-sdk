@@ -226,9 +226,15 @@ export default class Reachability {
   private getLocalSDPForClusters(clusterList: object) {
     let clusters: any[] = [...Object.keys(clusterList)];
 
-    clusters = clusters.map(async (key, index) => {
+    clusters = clusters.slice(0, 3).map(async (key, index) => {
       // All are in 100ms reach
-      return Promise.resolve({clusterId: key, elapsed: 100 - index});
+      // tried "bts.wsinm.*"
+      const closestClusterId = 'wjfkm.wjfkm.*';
+      if (key === closestClusterId) {
+        return Promise.resolve({clusterId: key, elapsed: 100 - index});
+      }
+
+      return Promise.reject();
     });
 
     return Promise.all(clusters)
